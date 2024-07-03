@@ -1,19 +1,13 @@
-package model;
-
-import java.util.Date;
+package Model;
 
 public class Prova {
     private int id;
-    private int competicaoId;
-    private Date dataProva;
     private String nome;
     private int duracao;
 
     // Construtor com todos os campos
-    public Prova(int id, int competicaoId, Date dataProva, String nome, int duracao) {
+    public Prova(int id, String nome, int duracao) {
         this.id = id;
-        this.competicaoId = competicaoId;
-        this.dataProva = dataProva;
         this.nome = nome;
         this.duracao = duracao;
     }
@@ -30,22 +24,6 @@ public class Prova {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getCompeticaoId() {
-        return competicaoId;
-    }
-
-    public void setCompeticaoId(int competicaoId) {
-        this.competicaoId = competicaoId;
-    }
-
-    public Date getDataProva() {
-        return dataProva;
-    }
-
-    public void setDataProva(Date dataProva) {
-        this.dataProva = dataProva;
     }
 
     public String getNome() {
@@ -68,8 +46,6 @@ public class Prova {
     public String toString() {
         return "Prova{" +
                 "id=" + id +
-                ", competicaoId=" + competicaoId +
-                ", dataProva=" + dataProva +
                 ", nome='" + nome + '\'' +
                 ", duracao=" + duracao +
                 '}';

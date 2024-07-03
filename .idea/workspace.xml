@@ -5,27 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e2bade1-b860-4ff5-82bc-40aacec3315f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Scoreboard.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scoreboard.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/control/CompeticaoControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/CompeticaoDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/ContextDatabase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/EquipeDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/ProvaDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/ResultadoDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Competicao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Equipe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Prova.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Resultado.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/ConfiguracaoView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/PlacarView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/CompeticaoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Erros/ConfiguracaoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Helpers/Helpers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interfaces/IEquipeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interfaces/IParticipanteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Participante.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Services/CompeticaoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Services/EquipeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Services/ParticipanteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Services/ProvaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Services/ResultadoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/ConsultarParticipantesView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/ParticipantesView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/control/CompeticaoControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/CompeticaoDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/ContextDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/EquipeDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/ProvaDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/ResultadoDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Competicao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Competicao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Equipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Equipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Prova.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Prova.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Resultado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Resultado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/Testes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ConfiguracaoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ConfiguracaoView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/PlacarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/PlacarView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +42,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -42,9 +50,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2ihOmdeDBVBfZPbYQz2Eomg4Gqb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -61,7 +69,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "304",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Feat/project-without-database",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Scoreboard/lib/postgresql-42.7.3.jar",
     "node.js.detected.package.eslint": "true",
@@ -105,20 +113,32 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719939507926</updated>
-      <workItem from="1719939509015" duration="15362000" />
+      <workItem from="1719939509015" duration="16142000" />
+      <workItem from="1720006076234" duration="22528000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/control/CompeticaoControl.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="7" />
+          <url>file://$PROJECT_DIR$/src/Services/ParticipanteService.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,14 +1,14 @@
-package view;
+package View;
 
-import model.Equipe;
-import model.Prova;
+import Model.Equipe;
+import Model.Prova;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
 public class PlacarView extends JFrame {
-    public PlacarView(List<String> equipes, List<Prova> provas) {
+    public PlacarView(List<Equipe> equipes, List<Prova> provas) {
         setTitle("Placar da Competição");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -20,8 +20,8 @@ public class PlacarView extends JFrame {
         equipePanel.setLayout(new GridLayout(equipes.size(), 1));
         equipePanel.setBorder(BorderFactory.createTitledBorder("Equipes"));
 
-        for (String equipe : equipes) {
-            equipePanel.add(new JLabel(equipe));
+        for (Equipe equipe : equipes) {
+            equipePanel.add(new JLabel(equipe.getNome()));
         }
 
         // Exibição das provas

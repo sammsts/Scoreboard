@@ -1,16 +1,14 @@
-package model;
+package Model;
 
 public class Equipe {
     private int id;
     private String nome;
-    private int competicaoId;
 
     public Equipe() {
     }
 
-    public Equipe(String nome, int competicaoId) {
-        this.nome = nome;
-        this.competicaoId = competicaoId;
+    public Equipe(Equipe _equipe) {
+        this.nome = _equipe.nome;
     }
 
     // Getters e Setters
@@ -30,20 +28,11 @@ public class Equipe {
         this.nome = nome;
     }
 
-    public int getCompeticaoId() {
-        return competicaoId;
-    }
-
-    public void setCompeticaoId(int competicaoId) {
-        this.competicaoId = competicaoId;
-    }
-
     @Override
     public String toString() {
         return "Equipe{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", competicaoId=" + competicaoId +
                 '}';
     }
 }
