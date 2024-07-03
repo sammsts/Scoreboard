@@ -4,13 +4,17 @@ import Controllers.CompeticaoController;
 import Erros.ConfiguracaoException;
 import Helpers.Helpers;
 import Model.Equipe;
+import Model.Prova;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 
+/**
+ * Classe que representa a interface gráfica de configuração da competição.
+ * Estende JFrame para criar uma janela de aplicação.
+ */
 public class ConfiguracaoView extends JFrame {
     private JTextField nomeEquipeField;
     private JTextField nomeProvaField;
@@ -19,12 +23,17 @@ public class ConfiguracaoView extends JFrame {
     private JButton adicionarProvaButton;
     private JButton iniciarCompeticaoButton;
     private JButton adicionarParticipantesButton;
-    private CompeticaoController controller;
-    private ConfiguracaoException _configuracaoException;
+    private CompeticaoController _controller;
     private Helpers _helpers;
 
-    public ConfiguracaoView(CompeticaoController controle, Helpers helpers) {
-        this.controller = controle;
+    /**
+     * Construtor da classe ConfiguracaoView.
+     *
+     * @param controller O controlador da competição.
+     * @param helpers    Um objeto Helpers para métodos auxiliares.
+     */
+    public ConfiguracaoView(CompeticaoController controller, Helpers helpers) {
+        this._controller = controller;
         this._helpers = helpers;
         setTitle("Configuração da Competição");
         setSize(700, 450);
@@ -100,6 +109,8 @@ public class ConfiguracaoView extends JFrame {
         add(provaPanel, BorderLayout.CENTER);
         add(iniciarPanel, BorderLayout.SOUTH);
 
+        verificaIniciarCompeticao();
+
         // Configurar listeners
         adicionarEquipeButton.addActionListener(new ActionListener() {
             @Override
@@ -113,9 +124,9 @@ public class ConfiguracaoView extends JFrame {
                         throw new ConfiguracaoException("Defina o nome da equipe.", "Alerta", JOptionPane.WARNING_MESSAGE);
                     }
 
-                    controle.AdicionarEquipe(_equipe);
+                    _controller.AdicionarEquipe(_equipe);
                     nomeEquipeField.setText("");
-                }catch (ConfiguracaoException ex) {
+                } catch (ConfiguracaoException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), ex.getTitle(), ex.getMessageType());
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -139,7 +150,7 @@ public class ConfiguracaoView extends JFrame {
                     }
 
                     if (!nomeProva.isEmpty() && duracaoProva > 0) {
-                        controle.AdicionarProva(nomeProva, duracaoProva);
+                        _controller.AdicionarProva(nomeProva, duracaoProva);
                         nomeProvaField.setText("");
                         duracaoProvaField.setText("");
                     } else {
@@ -164,11 +175,15 @@ public class ConfiguracaoView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if (controle.getEquipes().isEmpty() || controle.getProvas().isEmpty()) {
+                    if (_controller.getEquipes().isEmpty() || _controller.getProvas().isEmpty()) {
                         throw new ConfiguracaoException("A competição não pode ser iniciada sem equipes ou provas.", "Alerta", JOptionPane.WARNING_MESSAGE);
                     }
-                    controle.IniciarCompeticao();
-                    new PlacarView(controle.getEquipes(), controle.getProvas()).setVisible(true);
+
+                    if (_controller.getParticipantes().isEmpty()) {
+                        throw new ConfiguracaoException("A competição não pode ser iniciada sem participantes.", "Alerta", JOptionPane.WARNING_MESSAGE);
+                    }
+
+                    new PlacarView(_controller.getEquipes(), _controller.getProvas(), _controller).setVisible(true);
                     setVisible(false);
                 } catch (ConfiguracaoException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
@@ -191,5 +206,17 @@ public class ConfiguracaoView extends JFrame {
                 }
             }
         });
+    }
+
+    /**
+     * Verifica se a competição pode ser iniciada com base na presença de equipes, provas e participantes.
+     * Desabilita o botão de iniciar competição se algum dos requisitos não for atendido.
+     */
+    public void verificaIniciarCompeticao() {
+        if (_controller.getEquipes().isEmpty() || _controller.getProvas().isEmpty() || _controller.getParticipantes().isEmpty()) {
+            iniciarCompeticaoButton.setEnabled(false);
+        } else {
+            iniciarCompeticaoButton.setEnabled(true);
+        }
     }
 }

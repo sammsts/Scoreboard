@@ -12,6 +12,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * Classe que representa a interface gráfica para a configuração de participantes nas equipes da competição.
+ * Estende JFrame para criar uma janela de aplicação.
+ */
 public class ParticipantesView extends JFrame {
     private JTextField nomeParticipanteField;
     private JButton adicionarParticipanteButton;
@@ -22,7 +26,14 @@ public class ParticipantesView extends JFrame {
     private Helpers _helpers;
     private ConfiguracaoView _configuracaoView;
 
-    public ParticipantesView(CompeticaoController controller, Helpers helpers, ConfiguracaoView  configuracaoView) {
+    /**
+     * Construtor da classe ParticipantesView.
+     *
+     * @param controller      O controlador da competição.
+     * @param helpers         A classe utilitária Helpers.
+     * @param configuracaoView A janela de configuração principal da competição.
+     */
+    public ParticipantesView(CompeticaoController controller, Helpers helpers, ConfiguracaoView configuracaoView) {
         this._controller = controller;
         this._helpers = helpers;
         this._configuracaoView = configuracaoView;
@@ -46,6 +57,7 @@ public class ParticipantesView extends JFrame {
         List<Equipe> equipes = _controller.getEquipes();
         gbc.gridy++;
 
+        // Loop para adicionar componentes de interface para cada equipe e seus participantes
         for (Equipe equipe : equipes) {
             gbc.gridx = 0;
 
@@ -66,14 +78,12 @@ public class ParticipantesView extends JFrame {
             gbc.gridx = 2;
             participantesPanel.add(adicionarParticipanteButtonLocal, gbc);
 
-            adicionarParticipanteButtonLocal.addActionListener( new ActionListener() {
+            // Listener para adicionar um participante à equipe
+            adicionarParticipanteButtonLocal.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
                         Participante participante = new Participante();
-
-                        System.out.println("nomeParticipanteField: " + nomeParticipanteFieldLocal.getText());
-
                         String nomeParticipante = nomeParticipanteFieldLocal.getText() != null && !nomeParticipanteFieldLocal.getText().isEmpty() ? nomeParticipanteFieldLocal.getText() : "";
 
                         if (nomeParticipante.isEmpty()) {
@@ -98,7 +108,7 @@ public class ParticipantesView extends JFrame {
             gbc.gridy++;
         }
 
-        salvarParticipantesButton = new JButton("Fechar");
+        salvarParticipantesButton = new JButton("Salvar");
         salvarParticipantesButton.setPreferredSize(new Dimension(150, 30));
         consultarParticipantesButton = new JButton("Participantes");
         consultarParticipantesButton.setPreferredSize(new Dimension(150, 30));
@@ -108,6 +118,7 @@ public class ParticipantesView extends JFrame {
         fecharParticipantesViewPanel.add(salvarParticipantesButton);
         fecharParticipantesViewPanel.add(consultarParticipantesButton);
 
+        // Listener para abrir a janela de consulta de participantes
         consultarParticipantesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -121,12 +132,14 @@ public class ParticipantesView extends JFrame {
             }
         });
 
+        // Listener para fechar a janela de configuração de participantes e retornar à configuração principal
         salvarParticipantesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     setVisible(false);
                     _configuracaoView.setEnabled(true);
+                    _configuracaoView.verificaIniciarCompeticao();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                     JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado.", "Erro", JOptionPane.ERROR_MESSAGE);
